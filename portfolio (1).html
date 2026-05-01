@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dvij Raicha — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F2EC;
+    --ink: #1A1814;
+    --accent: #2D5A27;
+    --accent2: #8B4513;
+    --muted: #6B6560;
+    --rule: #D4CFC8;
+    --card: #FFFFFF;
+    --tag-bg: #E8E3DA;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 100px 48px 80px;
+    max-width: 900px;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    color: var(--ink);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-bio {
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 620px;
+    margin-bottom: 40px;
+  }
+  .hero-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn:hover { background: var(--ink); color: var(--bg); }
+  .btn.filled { background: var(--ink); color: var(--bg); }
+  .btn.filled:hover { background: var(--accent); border-color: var(--accent); }
+
+  /* ── SECTION ── */
+  section {
+    padding: 80px 48px;
+    border-top: 1px solid var(--rule);
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 52px;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  /* ── RESUME EMBED ── */
+  .resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 900px;
+  }
+  .resume-block h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .resume-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .resume-item:last-child { border-bottom: none; }
+  .resume-item-title {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .resume-item-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+  .resume-item-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .resume-download {
+    margin-top: 36px;
+  }
+  .skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    background: var(--tag-bg);
+    color: var(--ink);
+    padding: 4px 10px;
+    letter-spacing: 0.04em;
+  }
+  .award-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .award-item:last-child { border-bottom: none; }
+  .award-star {
+    color: var(--accent2);
+    font-size: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .award-text { font-size: 14px; line-height: 1.5; }
+  .award-text strong { display: block; font-weight: 500; margin-bottom: 2px; }
+  .award-text span { color: var(--muted); font-size: 13px; }
+
+  /* ── DOCUMENTS ── */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+  }
+  .doc-card {
+    background: var(--card);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .doc-card:hover { transform: translateY(-3px); }
+  .doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+  }
+  .doc-card:nth-child(2)::before { background: var(--accent2); }
+  .doc-card:nth-child(3)::before { background: #4A7C8E; }
+  .doc-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .doc-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .doc-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+  .doc-context {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .doc-statement {
+    font-size: 14px;
+    line-height: 1.7;
+    border-left: 2px solid var(--rule);
+    padding-left: 16px;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .doc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .doc-link:hover { border-bottom-color: var(--accent); }
+
+  /* ── REFLECTIVE ── */
+  .reflective-wrap {
+    max-width: 680px;
+  }
+  .reflective-wrap p {
+    font-size: 17px;
+    line-height: 1.85;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .reflective-wrap p:first-child::first-letter {
+    font-family: 'DM Serif Display', serif;
+    font-size: 64px;
+    float: left;
+    line-height: 0.8;
+    margin-right: 10px;
+    margin-top: 8px;
+    color: var(--accent);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1     { animation: fadeUp 0.7s ease both; }
+  .hero-bio    { animation: fadeUp 0.7s 0.15s ease both; }
+  .hero-links  { animation: fadeUp 0.7s 0.25s ease both; }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; }
+    .hero { padding: 60px 20px 48px; }
+    section { padding: 56px 20px; }
+    footer { padding: 28px 20px; flex-direction: column; gap: 8px; text-align: center; }
+    .resume-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-logo">Dvij Raicha</a>
+  <ul class="nav-links">
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#documents">Documents</a></li>
+    <li><a href="#reflection">Reflection</a></li>
+  </ul>
+</nav>
+
+<!-- HERO / ABOUT -->
+<section id="top" style="border-top:none; padding-top:0;">
+  <div class="hero">
+    <p class="hero-eyebrow">Portfolio — Dvij Raicha</p>
+    <h1>Builder.<br><em>Thinker.</em><br>Maker.</h1>
+    <p class="hero-bio">
+      CS + Math at the University of Maryland, Gemstone Honors Program, Class of 2029. I build things at the intersection of hardware and software — embedded systems, AR platforms, ML pipelines, and tools that solve real problems. I care about measurable impact, fast iteration, and shipping work that matters.
+    </p>
+    <div class="hero-links">
+      <a href="https://dvijraicha.vercel.app/" target="_blank" class="btn filled">Personal Site ↗</a>
+      <a href="https://github.com/cuber-1" target="_blank" class="btn">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/dvij-raicha/" target="_blank" class="btn">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header">
+    <span class="section-label">01</span>
+    <h2 class="section-title">Education</h2>
+  </div>
+  <div class="resume-grid">
+    <div class="resume-block">
+      <h3>University of Maryland</h3>
+      <div class="resume-item">
+        <div class="resume-item-title">B.S. Computer Science &amp; Mathematics</div>
+        <div class="resume-item-meta">Computational Finance Minor · Gemstone Honors · May 2025 – May 2029</div>
+        <div class="resume-item-desc">College Park, MD. Gemstone Honors Program is a four-year research program where students work on interdisciplinary team projects with faculty mentors. I'm currently a member of Team Cyborg, researching exoskeleton assistance and cognitive-motor performance in human-robot interaction.</div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-item-title">Relevant Coursework</div>
+        <div class="skills-row">
+          <span class="tag">Computer Systems</span>
+          <span class="tag">Algorithms</span>
+          <span class="tag">Programming Languages</span>
+          <span class="tag">OOP</span>
+          <span class="tag">Linear Algebra</span>
+          <span class="tag">Multivariable Calculus</span>
+        </div>
+      </div>
+    </div>
+    <div class="resume-block">
+      <h3>Awards &amp; Honors</h3>
+      <div class="award-item">
+        <span class="award-star">★</span>
+        <div class="award-text">
+          <strong>1st Place Overall — YHack 2026</strong>
+          <span>Awarded for Circa: precision irrigation platform</span>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-star">★</span>
+        <div class="award-text">
+          <strong>ASUS 1st Place Societal Impact — YHack 2026</strong>
+          <span>Awarded for Circa</span>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-star">★</span>
+        <div class="award-text">
+          <strong>Intuit Most Transformative Hack — Technica 2025</strong>
+          <span>Awarded for DocSimplified (Gen AI/ML category)</span>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="award-star">★</span>
+        <div class="award-text">
+          <strong>3× FIRST Robotics World Championship</strong>
+          <span>FRC Team 1727 REX — 2023, 2024, 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-label">02</span>
+    <h2 class="section-title">Work Experience</h2>
+  </div>
+  <div class="resume-grid">
+    <div class="resume-block">
+      <h3>Research &amp; Technical Roles</h3>
+      <div class="resume-item">
+        <div class="resume-item-title">Project Lead — Niantic Spatial (XR Club)</div>
+        <div class="resume-item-meta">Feb 2026 – Present · College Park, MD</div>
+        <div class="resume-item-desc">Leading a team of 6 developers building a location-aware AR application on the Niantic Spatial toolkit. Managing milestones, coordinating reviews, and driving iterative feature delivery.</div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-item-title">Research Assistant — UMBC VLSI-SoC Lab</div>
+        <div class="resume-item-meta">Jun 2024 – Jun 2025 · Baltimore, MD</div>
+        <div class="resume-item-desc">Authored a 7-page peer-reviewed research proposal on multisensory onboard localization for micro drones. Achieved stable autonomous flight exceeding 1 minute and optimized camera pipelines to 15 FPS for onboard ML inference.</div>
+      </div>
+    </div>
+    <div class="resume-block">
+      <h3>Leadership</h3>
+      <div class="resume-item">
+        <div class="resume-item-title">President &amp; Programming Lead — FRC Team 1727 REX</div>
+        <div class="resume-item-meta">Sep 2022 – May 2025 · Timonium, MD</div>
+        <div class="resume-item-desc">Developed Java-based robot control subsystems managing actuators and sensors under real-time constraints. Led and mentored 40+ team members. Secured $50,000+ in sponsorships.</div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-item-title">Technical Skills</div>
+        <div class="skills-row">
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+          <span class="tag">C</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">ESP32</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Docker</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section id="documents">
+  <div class="section-header">
+    <span class="section-label">03</span>
+    <h2 class="section-title">Selected Work</h2>
+  </div>
+  <div class="doc-grid">
+
+    <!-- DOC 1: Circa -->
+    <div class="doc-card">
+      <div class="doc-number">Document 01</div>
+      <div class="doc-title">Circa: Precision Irrigation Platform</div>
+      <div class="doc-type">Hardware + Software · Hackathon Project · Mar 2026</div>
+      <div class="doc-context">
+        <strong>What it is:</strong> Circa is a turret-based smart irrigation system combining ESP32 mesh networking, MQTT, FastAPI, XGBoost soil moisture forecasting, and a multilingual AI chatbot. It targets the inefficiency of rectangular field irrigation using center-pivot principles.
+      </div>
+      <div class="doc-statement">
+        Circa was built in under 48 hours at YHack 2026, where it won 1st Place Overall and 1st Place Societal Impact. I led hardware fabrication, CAD, electronics assembly, and full-stack software integration. It represents the kind of work I care about most: hardware and software working together to solve a problem with real-world stakes. The project demonstrates systems-level thinking, embedded programming under time pressure, and the ability to take a concept from idea to working physical prototype.
+      </div>
+      <a href="https://devpost.com/software/circa-u1fsx5" target="_blank" class="doc-link">View on Devpost ↗</a>
+    </div>
+
+    <!-- DOC 2: DocSimplified -->
+    <div class="doc-card">
+      <div class="doc-number">Document 02</div>
+      <div class="doc-title">DocSimplified: AI Form Assistant</div>
+      <div class="doc-type">Full-Stack Web App · Hackathon Project · Nov 2025</div>
+      <div class="doc-context">
+        <strong>What it is:</strong> DocSimplified is a multilingual AI platform that simplifies government forms for low-literacy and ESL users. It includes a browser-based fillable PDF editor, LLM-based step-by-step explanations, text-to-speech generation, and Supabase-backed user profiles.
+      </div>
+      <div class="doc-statement">
+        Built at Technica 2025, DocSimplified won the Intuit Most Transformative Hack award for Gen AI/ML. I worked with teammates to design and ship a tool targeting a real accessibility gap: the millions of people who struggle to navigate complex government paperwork. The project shows my interest in using technology to lower barriers, my ability to integrate multiple APIs and services rapidly, and my growth as a full-stack developer with a product-oriented mindset.
+      </div>
+      <a href="https://devpost.com/software/docsimplified" target="_blank" class="doc-link">View on Devpost ↗</a>
+    </div>
+
+    <!-- DOC 3: GitHub -->
+    <div class="doc-card">
+      <div class="doc-number">Document 03</div>
+      <div class="doc-title">GitHub: Open Source &amp; Project History</div>
+      <div class="doc-type">Code Repository · Ongoing</div>
+      <div class="doc-context">
+        <strong>What it is:</strong> My GitHub profile is a living record of projects spanning embedded systems, AR development, robotics, web applications, and research tooling. It includes work from hackathons, coursework, personal side projects, and research.
+      </div>
+      <div class="doc-statement">
+        My GitHub captures the breadth and continuity of my technical work in a way that a resume can't. It includes code for everything from FRC robot subsystems to AR spatial apps built on the Niantic platform. What it collectively shows is that I build consistently and across many domains. I'm not a specialist in one narrow stack; I adapt to what the problem needs. It also reflects a habit of learning in public: most of my projects are experiments as much as they are deliverables, and the commit history shows that process.
+      </div>
+      <a href="https://github.com/cuber-1" target="_blank" class="doc-link">View on GitHub ↗</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- REFLECTIVE STATEMENT -->
+<section id="reflection">
+  <div class="section-header">
+    <span class="section-label">04</span>
+    <h2 class="section-title">Reflective Statement</h2>
+  </div>
+  <div class="reflective-wrap">
+    <p>
+      The thread running through everything I've done is a bias toward building. Not planning to build, not researching what to build — actually making something, getting it in front of people, and learning from what happens. Whether it's a robot, a drone, a web app, or an ESP32 mesh network mounted on an irrigation turret, the moment I care about most is when something that didn't exist before starts working.
+    </p>
+    <p>
+      The projects in this portfolio show different sides of that same instinct. Circa started as a question: why does agricultural technology stop at the edge of the rectangular field? It ended as a working prototype, built from scratch in 48 hours, that won two awards at YHack 2026. DocSimplified started from noticing how difficult government forms are for people without legal literacy or strong English skills, and turned into an accessible AI tool that won at Technica 2025. My GitHub is where that pattern becomes most visible — project after project, across robotics, AR, embedded systems, and full-stack web, each one a version of the same impulse to close the gap between an idea and a working thing.
+    </p>
+    <p>
+      My interest in computer science and mathematics isn't just academic. I study systems because I want to understand how things actually work at a low level, which makes me a better builder at a high level. My time in FIRST Robotics gave me that discipline early — writing autonomous path planning code in Java under competition deadlines, fundraising $50,000+ to keep the team operational, and mentoring younger students taught me that technical skill and leadership aren't separate. They're the same job.
+    </p>
+    <p>
+      As a candidate, what I offer is adaptability across the hardware-software boundary, a track record of shipping under pressure, and a genuine interest in problems that have human stakes. I want to keep building in environments where that matters. The Gemstone Honors Program and my work on Team Cyborg are pulling me toward research at the intersection of human-robot interaction and assistive technology. My hackathon projects and XR work are pulling me toward applied engineering. I'm comfortable holding both directions at once, and I think the best work usually happens at exactly that kind of intersection.
+    </p>
+    <p>
+      This portfolio is a partial picture. The resume shows titles and dates. The projects show outputs. What they don't fully capture is what it felt like to debug an ESP32 WiFi instability at 3am, or to refactor a camera pipeline during a live demo, or to figure out how to explain a complex robotics system to a sponsor who had no engineering background. Those moments are where the real learning happened. I'm still early in my career, but I know what kind of work I want to do, and I know I'm capable of doing it.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Dvij Raicha · draicha@terpmail.umd.edu · 201-356-7346</p>
+  <p>University of Maryland · CS &amp; Math · Class of 2029</p>
+</footer>
+
+</body>
+</html>
